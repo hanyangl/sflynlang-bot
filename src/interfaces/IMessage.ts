@@ -7,16 +7,34 @@
  * @format
  */
 
-import { Message } from 'discord.js';
+import { GuildEmoji, Message } from 'discord.js';
 import Bot from '@Bot';
 import ISetting from './ISetting';
 
 interface IMessage extends Message {
   /**
+   * Official color.
+   * @property
+   */
+  color: string;
+
+  /**
    * Bot Manager.
    * @property
    */
   bot: Bot;
+
+  /**
+   * 'no' emoji for reactions.
+   * @property
+   */
+  noEmoji: GuildEmoji | null;
+
+  /**
+   * 'yes' emoji for reactions.
+   * @property
+   */
+  yesEmoji: GuildEmoji | null;
 
   /**
    * Get the developer role from the database.

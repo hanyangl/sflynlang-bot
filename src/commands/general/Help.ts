@@ -81,6 +81,7 @@ class Help extends Command {
 
     await message.channel.send(
       new MessageEmbed()
+        .setColor(message.color)
         .setAuthor('Commands list', 'https://www.danielsolartech.com/images/sflyn_icon.jpg')
         .setDescription(description)
         .setFooter('2020 ~ Sflynlang')

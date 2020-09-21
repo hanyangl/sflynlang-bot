@@ -17,6 +17,7 @@
       "@Decorators/*": ["decorators/*"],
       "@Events/*": ["events/*"],
       "@Interfaces/*": ["interfaces/*"],
+      "@Utils/*": ["utils/*"],
     },
   },
   "exclude": [

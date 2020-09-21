@@ -33,7 +33,8 @@
     "@Database": "dist/database",
     "@Decorators": "dist/decorators",
     "@Events": "dist/events",
-    "@Interfaces": "dist/interfaces"
+    "@Interfaces": "dist/interfaces",
+    "@Utils": "dist/utils"
   },
   "dependencies": {
     "discord.js": "^12.3.1",

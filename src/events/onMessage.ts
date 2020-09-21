@@ -58,7 +58,10 @@ async function onMessage(bot: Bot, message: Message): Promise<void> {
       const iMessage: IMessage = Object.assign(
         message,
         {
+          color: '#5dc0b9',
           bot,
+          noEmoji: bot.getClient().emojis.cache.find((e) => e.name === 'no1') || null,
+          yesEmoji: bot.getClient().emojis.cache.find((e) => e.name === 'yes1') || null,
           getDevRole,
           sendAndDestroyInFiveSeconds: deleteMessageInFiveSeconds,
         },

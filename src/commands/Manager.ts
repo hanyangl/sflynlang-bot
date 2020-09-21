@@ -10,11 +10,13 @@
 import ICommand from '@Interfaces/ICommand';
 
 // Developer
+import SetChannel from './developer/SetChannel';
 import SetRole from './developer/SetRole';
 
 // General
 import Help from './general/Help';
 import Ping from './general/Ping';
+import Suggestion from './general/Suggestion';
 
 /**
  * Commands Manager.
@@ -35,11 +37,13 @@ class CommandsManager {
    */
   run(): void {
     // Developer
+    this.commands.push(new SetChannel());
     this.commands.push(new SetRole());
 
     // General
     this.commands.push(new Help());
     this.commands.push(new Ping());
+    this.commands.push(new Suggestion());
   }
 
   /**
