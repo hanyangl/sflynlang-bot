@@ -8,7 +8,8 @@
  */
 
 import ICommand from '@Interfaces/ICommand';
-import { Client, Message } from 'discord.js';
+import ICommandType from '@Interfaces/ICommandType';
+import IMessage from '@Interfaces/IMessage';
 
 /**
  * Empty command.
@@ -16,13 +17,11 @@ import { Client, Message } from 'discord.js';
  */
 class Command implements ICommand {
   readonly name: string = '';
-  readonly bot: Client;
+  readonly description: string = '';
 
-  constructor(bot: Client) {
-    this.bot = bot;
-  }
+  readonly type: ICommandType = ICommandType.GENERAL;
 
-  async run(_message: Message, _args: string[]): Promise<void> {};
+  async run(_message: IMessage, _args: string[]): Promise<void> {};
 }
 
 export default Command;

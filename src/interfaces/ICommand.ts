@@ -7,7 +7,8 @@
  * @format
  */
 
-import { Client, Message } from 'discord.js';
+import ICommandType from './ICommandType';
+import IMessage from './IMessage';
 
 export interface ICommandMethods {
   /**
@@ -17,6 +18,14 @@ export interface ICommandMethods {
    * @property
    */
   readonly name: string;
+
+  /**
+   * Command description.
+   * 
+   * @readonly
+   * @property
+   */
+  readonly description: string;
 }
 
 export interface ICommandExecution {
@@ -25,19 +34,19 @@ export interface ICommandExecution {
    * 
    * @async
    * @function
-   * @param { Message } message
+   * @param { IMessage } message
    * @param { string[] } args
    * @returns { Promise<void> }
    */
-  run(message: Message, args: string[]): Promise<void>;
+  run(message: IMessage, args: string[]): Promise<void>;
 }
 
 export default interface ICommand extends ICommandMethods, ICommandExecution {
   /**
-   * Bot client.
+   * Command type.
    * 
-   * @property
    * @readonly
+   * @property
    */
-  readonly bot: Client;
+  readonly type: ICommandType;
 }

@@ -9,6 +9,25 @@
 
 import Bot from '@Bot';
 import { Message } from "discord.js";
+import IMessage from '@Interfaces/IMessage';
+import ISetting from '@Interfaces/ISetting';
+
+async function deleteMessageInFiveSeconds(this: IMessage, message: string): Promise<void> {
+  const botMessage = await this.reply(message);
+
+  // Sleep by 5 seconds.
+  await this.bot.sleep(5000);
+
+  // Check if the message can be deleted.
+  if (botMessage.deletable) {
+    // Delete the message.
+    await botMessage.delete();
+  }
+}
+
+async function getDevRole(this: IMessage): Promise<ISetting | null> {
+  return await this.bot.getDatabase().getSettingByKey('dev_role');
+}
 
 /**
  * On channel message event.
@@ -36,8 +55,17 @@ async function onMessage(bot: Bot, message: Message): Promise<void> {
     const command = bot.getCommands().getCommandByName(commandName.slice(bot.getPrefix().length));
 
     if (command) {
+      const iMessage: IMessage = Object.assign(
+        message,
+        {
+          bot,
+          getDevRole,
+          sendAndDestroyInFiveSeconds: deleteMessageInFiveSeconds,
+        },
+      );
+
       // Execute the command.
-      await command.run(message, commandArguments);
+      await command.run(iMessage, commandArguments);
     }
   }
 }

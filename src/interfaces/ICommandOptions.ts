@@ -17,6 +17,12 @@ interface ICommandOptions {
    * @property
    */
   name: string;
+
+  /**
+   * Command description.
+   * @property
+   */
+  description: string;
 }
 
 export default ICommandOptions;

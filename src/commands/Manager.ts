@@ -8,8 +8,13 @@
  */
 
 import ICommand from '@Interfaces/ICommand';
-import { Client } from 'discord.js';
-import PingCommand from './general/Ping';
+
+// Developer
+import SetRole from './developer/SetRole';
+
+// General
+import Help from './general/Help';
+import Ping from './general/Ping';
 
 /**
  * Commands Manager.
@@ -26,11 +31,25 @@ class CommandsManager {
    * Start the commands manager.
    * 
    * @function
-   * @param { Client } bot
    * @returns { void }
    */
-  run(bot: Client): void {
-    this.commands.push(new PingCommand(bot));
+  run(): void {
+    // Developer
+    this.commands.push(new SetRole());
+
+    // General
+    this.commands.push(new Help());
+    this.commands.push(new Ping());
+  }
+
+  /**
+   * Get all commands.
+   * 
+   * @function
+   * @returns { ICommand[] }
+   */
+  getCommands(): ICommand[] {
+    return this.commands;
   }
 
   /**

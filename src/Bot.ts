@@ -7,7 +7,7 @@
  * @format
  */
 
-import DiscordJS from 'discord.js';
+import { Client } from 'discord.js';
 import DatabaseManager from '@Database/Manager';
 import CommandsManager from '@Commands/Manager';
 import onMessage from '@Events/onMessage';
@@ -18,14 +18,14 @@ import onReady from '@Events/onReady';
  * @class
  */
 class Bot {
-  private client: DiscordJS.Client;
+  private client: Client;
   private database: DatabaseManager;
   private commands: CommandsManager;
 
   private prefix: string;
 
   constructor() {
-    this.client = new DiscordJS.Client();
+    this.client = new Client();
     this.database = new DatabaseManager();
     this.commands = new CommandsManager();
 
@@ -36,9 +36,9 @@ class Bot {
    * Get the bot client.
    * 
    * @function
-   * @returns { DiscordJS.Client }
+   * @returns { Client }
    */
-  getClient(): DiscordJS.Client {
+  getClient(): Client {
     return this.client;
   }
 
@@ -97,7 +97,7 @@ class Bot {
     this.prefix = prefixSetting.value;
 
     // Load commands.
-    this.getCommands().run(this.getClient());
+    this.getCommands().run();
 
     // Set events.
     this.getClient().on('message', async (message) => await onMessage(this, message));
@@ -105,6 +105,18 @@ class Bot {
 
     // Log the bot.
     await this.getClient().login(process.env.DISCORD_TOKEN);
+  }
+
+  /**
+   * Async setTimeout.
+   * 
+   * @async
+   * @function
+   * @param { number } miliseconds
+   * @returns { Promise<void> }
+   */
+  sleep(miliseconds: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, miliseconds));
   }
 }
 

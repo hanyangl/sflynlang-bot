@@ -22,6 +22,7 @@ function command(
   return function <T extends { new (...args: any[]): {} }>(constructor: T) {
     return class extends constructor implements ICommandMethods {
       readonly name: string = options.name;
+      readonly description: string = options.description;
     };
   };
 }

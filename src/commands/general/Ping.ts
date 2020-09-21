@@ -7,16 +7,22 @@
  * @format
  */
 
+import { general } from '@Decorators/commandTypes';
 import command from '@Decorators/command';
 import Command from '@Commands/Command';
-import { Message } from 'discord.js';
+import IMessage from '@Interfaces/IMessage';
+import moment from 'moment';
 
+@general
 @command({
-  name: 'ping'
+  name: 'ping',
+  description: ':ping_pong: Ping Pong...',
 })
 class PingCommand extends Command {
-  async run(message: Message): Promise<void> {
-    await message.reply('Pong!');
+  async run(message: IMessage): Promise<void> {
+    const diffTime = moment(message.createdTimestamp).diff(Date.now());
+
+    await message.reply(`:ping_pong: Pong! **(${moment(diffTime).milliseconds()}ms)**`);
   }
 }
 
