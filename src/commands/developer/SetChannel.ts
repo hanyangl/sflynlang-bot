@@ -40,7 +40,9 @@ class SetChannel extends Command {
 
     const devRole = await message.getDevRole();
 
-    if (!['suggestions', 'welcomes'].includes(channelType)) {
+    if (![
+      'suggestions', 'welcomes', 'rules', 'github',
+    ].includes(channelType)) {
       await message.sendAndDestroyInFiveSeconds(`the channel type ('${channelType}') is not valid.`);
       return;
     }

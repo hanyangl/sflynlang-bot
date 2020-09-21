@@ -10,6 +10,7 @@
 import { Client } from 'discord.js';
 import DatabaseManager from '@Database/Manager';
 import CommandsManager from '@Commands/Manager';
+import onGuildMemberAdd from '@Events/onGuildMemberAdd';
 import onMessage from '@Events/onMessage';
 import onReady from '@Events/onReady';
 
@@ -73,6 +74,16 @@ class Bot {
   }
 
   /**
+   * Get the Sflynlang icon url.
+   * 
+   * @function
+   * @returns { string }
+   */
+  getSflynIcon(): string {
+    return 'https://www.danielsolartech.com/images/sflyn_icon.jpg';
+  }
+
+  /**
    * Start the bot application.
    * 
    * @async
@@ -100,6 +111,7 @@ class Bot {
     this.getCommands().run();
 
     // Set events.
+    this.getClient().on('guildMemberAdd', async (member) => await onGuildMemberAdd(this, member))
     this.getClient().on('message', async (message) => await onMessage(this, message));
     this.getClient().on('ready', () => onReady(this));
 
