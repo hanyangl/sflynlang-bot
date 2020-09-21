@@ -15,6 +15,7 @@ import IMessage from '@Interfaces/IMessage';
 @developer
 @command({
   name: 'setrole',
+  arguments: '<dev/mod> <role_mention>',
   description: 'Set a role to the settings.',
 })
 class SetRole extends Command {

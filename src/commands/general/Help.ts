@@ -22,7 +22,13 @@ import ICommandType from '@Interfaces/ICommandType';
 })
 class Help extends Command {
   private commandToString(prefix: string, command: ICommand): string {
-    return `**${prefix}${command.name}**: ${command.description}`;
+    let str: string = `**${prefix}${command.name}`;
+
+    if (command.arguments) {
+      str += ` ${command.arguments}`;
+    }
+
+    return `${str}**: ${command.description}`;
   }
 
   async run(message: IMessage): Promise<void> {

@@ -20,6 +20,14 @@ export interface ICommandMethods {
   readonly name: string;
 
   /**
+   * Command arguments.
+   * 
+   * @readonly
+   * @property
+   */
+  readonly arguments?: string;
+
+  /**
    * Command description.
    * 
    * @readonly

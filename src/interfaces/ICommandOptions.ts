@@ -19,6 +19,12 @@ interface ICommandOptions {
   name: string;
 
   /**
+   * Command arguments.
+   * @property
+   */
+  arguments?: string;
+
+  /**
    * Command description.
    * @property
    */
