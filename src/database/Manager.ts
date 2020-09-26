@@ -7,9 +7,9 @@
  * @format
  */
 
-import ISetting from '@Interfaces/ISetting';
-import { connect, Model } from 'mongoose';
-import settings from './models/settings';
+import ISetting from "@Interfaces/ISetting";
+import { connect, Model } from "mongoose";
+import settings from "./models/settings";
 
 /**
  * Database Manager.
@@ -17,25 +17,25 @@ import settings from './models/settings';
  */
 class DatabaseManager {
   /**
-   * Start the database manager.
-   * 
+   * Start the database manager and connect to the MongoDB database.
+   *
    * @async
    * @function
    * @returns { Promise<void> }
    */
   async run(): Promise<void> {
-    await connect(process.env.MONGODB || '', {
+    await connect(process.env.MONGODB || "", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
 
-    console.log('Database connected!');
+    console.log("Database connected!");
   }
 
   /**
    * Get the settings document.
-   * 
+   *
    * @function
    * @returns { Model<ISetting> }
    */
@@ -45,7 +45,7 @@ class DatabaseManager {
 
   /**
    * Get a setting by its key.
-   * 
+   *
    * @async
    * @function
    * @param { string } key

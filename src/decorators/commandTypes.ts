@@ -7,49 +7,49 @@
  * @format
  */
 
-import ICommandType from '@Interfaces/ICommandType';
+import ICommandType from "@Interfaces/ICommandType";
 
 function commandType<T extends { new (...args: any[]): {} }>(
   constructor: T,
-  type: ICommandType,
+  type: ICommandType
 ) {
   return class extends constructor {
     readonly type: ICommandType = type;
-  }
+  };
 }
 
 /**
- * Developer command decorator.
- * 
+ * Set the command type to developer,
+ *
  * @function
  * @param constructor
  */
 export function developer<T extends { new (...args: any[]): {} }>(
-  constructor: T,
+  constructor: T
 ) {
   return commandType<T>(constructor, ICommandType.DEVELOPER);
 }
 
 /**
- * General command decorator.
- * 
+ * Set the command type to general.
+ *
  * @function
  * @param constructor
  */
 export function general<T extends { new (...args: any[]): {} }>(
-  constructor: T,
+  constructor: T
 ) {
   return commandType<T>(constructor, ICommandType.GENERAL);
 }
 
 /**
- * Moderator command decorator.
- * 
+ * Set the command type to moderator.
+ *
  * @function
  * @param constructor
  */
 export function moderator<T extends { new (...args: any[]): {} }>(
-  constructor: T,
+  constructor: T
 ) {
   return commandType<T>(constructor, ICommandType.MODERATOR);
 }

@@ -7,16 +7,16 @@
  * @format
  */
 
-import ICommand from '@Interfaces/ICommand';
+import ICommand from "@Interfaces/ICommand";
 
 // Developer
-import SetChannel from './developer/SetChannel';
-import SetRole from './developer/SetRole';
+import SetChannel from "./developer/SetChannel";
+import SetRole from "./developer/SetRole";
 
 // General
-import Help from './general/Help';
-import Ping from './general/Ping';
-import Suggestion from './general/Suggestion';
+import Help from "./general/Help";
+import Ping from "./general/Ping";
+import Suggestion from "./general/Suggestion";
 
 /**
  * Commands Manager.
@@ -31,16 +31,16 @@ class CommandsManager {
 
   /**
    * Start the commands manager.
-   * 
+   *
    * @function
    * @returns { void }
    */
   run(): void {
-    // Developer
+    // Developer commands
     this.commands.push(new SetChannel());
     this.commands.push(new SetRole());
 
-    // General
+    // General commands
     this.commands.push(new Help());
     this.commands.push(new Ping());
     this.commands.push(new Suggestion());
@@ -48,7 +48,7 @@ class CommandsManager {
 
   /**
    * Get all commands.
-   * 
+   *
    * @function
    * @returns { ICommand[] }
    */
@@ -58,7 +58,7 @@ class CommandsManager {
 
   /**
    * Get a command by its name.
-   * 
+   *
    * @function
    * @param { string } name
    * @returns { ICommand | null }

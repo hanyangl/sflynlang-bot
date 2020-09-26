@@ -7,9 +7,9 @@
  * @format
  */
 
-import { GuildEmoji, Message } from 'discord.js';
-import Bot from '@Bot';
-import ISetting from './ISetting';
+import { GuildEmoji, Message } from "discord.js";
+import Bot from "@Bot";
+import ISetting from "./ISetting";
 
 interface IMessage extends Message {
   /**
@@ -38,7 +38,7 @@ interface IMessage extends Message {
 
   /**
    * Get the developer role from the database.
-   * 
+   *
    * @async
    * @function
    * @returns { Promise<ISetting | null> }
@@ -46,8 +46,8 @@ interface IMessage extends Message {
   getDevRole(): Promise<ISetting | null>;
 
   /**
-   * Send a message to the current channel and delete it in five seconds.
-   * 
+   * Reply an user message and delete the bot message in five seconds.
+   *
    * @async
    * @function
    * @param { string } message

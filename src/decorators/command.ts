@@ -7,18 +7,17 @@
  * @format
  */
 
-import { ICommandMethods } from '@Interfaces/ICommand';
-import ICommandOptions from '@Interfaces/ICommandOptions';
+import { ICommandMethods } from "@Interfaces/ICommand";
+import ICommandOptions from "@Interfaces/ICommandOptions";
 
 /**
- * Command class decorator.
- * 
+ * Add the name, description and arguments of the command to the
+ * current class for the Help command.
+ *
  * @function
  * @param { ICommandOptions } options
  */
-function command(
-  options: ICommandOptions,
-) {
+function command(options: ICommandOptions) {
   return function <T extends { new (...args: any[]): {} }>(constructor: T) {
     return class extends constructor implements ICommandMethods {
       readonly name = options.name;
