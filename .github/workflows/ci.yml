@@ -1,6 +1,22 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  pull_request:
+    paths:
+      - "**.ts"
+      - "nodemon.json"
+      - "package-lock.json"
+      - "package.json"
+      - "tsconfig.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "**.ts"
+      - "nodemon.json"
+      - "package-lock.json"
+      - "package.json"
+      - "tsconfig.json"
 
 jobs:
   build:
@@ -9,8 +25,13 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        version: [12.x, 14.x]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+        version:
+          - 12.x
+          - 14.x
 
     steps:
       - name: Install Node.JS v${{ matrix.version }}
