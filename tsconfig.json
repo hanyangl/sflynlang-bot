@@ -17,14 +17,9 @@
       "@Decorators/*": ["decorators/*"],
       "@Events/*": ["events/*"],
       "@Interfaces/*": ["interfaces/*"],
-      "@Utils/*": ["utils/*"],
-    },
+      "@Utils/*": ["utils/*"]
+    }
   },
-  "exclude": [
-    "./node_modules/",
-    "./dist/"
-  ],
-  "include": [
-    "./src/"
-  ]
+  "exclude": ["./node_modules/", "./dist/"],
+  "include": ["./src/"]
 }
